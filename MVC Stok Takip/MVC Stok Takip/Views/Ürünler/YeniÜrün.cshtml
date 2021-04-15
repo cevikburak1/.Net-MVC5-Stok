@@ -1,0 +1,37 @@
+﻿@model MVC_Stok_Takip.Models.EntitiyFreamwork.Tbl_Ürünler
+@{
+    ViewBag.Title = "YeniÜrün";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <h2>Yeni Ürün Ekleme Sayfası</h2>
+    <br />
+    <label>Ürün Adı</label>
+    @Html.TextBoxFor(x => x.ad, new { @class = "form-control" })
+    <br />
+
+    <label>Ürünün Markası</label>
+    @Html.TextBoxFor(x => x.marka, new { @class = "form-control" })
+    <br />
+
+    <label>Ürünün Stok Durumu</label>
+    @Html.TextBoxFor(x => x.stok, new { @class = "form-control" })
+
+    <br />
+    <label>Ürün Alış Fiyatı</label>
+    @Html.TextBoxFor(x => x.alışfiyatı, new { @class = "form-control" })
+
+    <br />
+    <label>Ürün Satış Fiyatı </label>
+    @Html.TextBoxFor(x => x.satışfiyat, new { @class = "form-control" })
+    <br />
+
+    <label>Ürünün Kategorisi</label>
+
+    @Html.DropDownListFor(x=>x.Tbl_Kategori.id, (List<SelectListItem>)ViewBag.drop,new {@class ="form-control" })
+    <br />
+
+    <button class="btn btn-success">Ekle</button>
+</form>
+

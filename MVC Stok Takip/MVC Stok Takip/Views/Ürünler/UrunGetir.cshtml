@@ -1,0 +1,32 @@
+﻿@model MVC_Stok_Takip.Models.EntitiyFreamwork.Tbl_Ürünler
+@{
+    ViewBag.Title = "UrunGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("UrunGuncelle", "Ürünler", FormMethod.Post))
+{
+    <h2>Ürün Güncelleme  Sayfası </h2>
+    <br />
+    @Html.HiddenFor(x => x.id, new { @class = "form-control" })
+    <br />
+    <label>Ürün İsimi</label>
+    @Html.TextBoxFor(x => x.ad, new { @class = "form-control" })
+    <br />
+    <label>Ürün Marka</label>
+    @Html.TextBoxFor(x => x.marka, new { @class = "form-control" })
+    <br />
+    <label>Ürünün Stok Durumu</label>
+    @Html.TextBoxFor(x => x.stok, new { @class = "form-control" })
+    <br />
+    <label>Ürünün Alış Fiyatı</label>
+    @Html.TextBoxFor(x => x.alışfiyatı, new { @class = "form-control" })
+    <br />
+    <label>Ürünün Satış Fiyatı</label>
+    @Html.TextBoxFor(x => x.satışfiyat, new { @class = "form-control" })
+    <br />
+    <label>Ürünün Kategorisi</label>
+    @Html.DropDownListFor(x => x.Tbl_Kategori.id, (List<SelectListItem>)ViewBag.urunkategorı, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-warning">Güncelle</button>
+}

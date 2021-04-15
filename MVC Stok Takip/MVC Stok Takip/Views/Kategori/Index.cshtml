@@ -1,0 +1,28 @@
+﻿@using MVC_Stok_Takip.Models.EntitiyFreamwork
+@model List<Tbl_Kategori>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Kategori Adı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+
+    </tr>
+    @foreach(var x in Model)
+    {
+<tr>
+    <td>@x.id</td>
+    <td>@x.Ad</td>
+    <td><a href="/Kategori/Sil/@x.id" class="btn btn-danger">Sil</a></td>
+    <td><a href="/Kategori/Guncelle/@x.id" class="btn btn-success">Güncelle</a></td>
+
+</tr>
+    }
+</table>
+<a href="/Kategori/YeniKategori/" class=" btn btn-primary"> Yeni Kategori</a>
+

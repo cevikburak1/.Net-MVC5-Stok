@@ -1,0 +1,31 @@
+﻿@model MVC_Stok_Takip.Models.EntitiyFreamwork.Tbl_Satışlar
+@{
+    ViewBag.Title = "YeniSatış";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <h2>Satış Paneli</h2>
+    <br />
+    <label>Ürün Adı</label>
+    @Html.DropDownListFor(x => x.Tbl_Ürünler.id, (List<SelectListItem>)ViewBag.drop1, new { @class = "form-control" })
+    <br />
+
+    <label>Personel Adı</label>
+    @Html.DropDownListFor(x => x.Tbl_Personel.id, (List<SelectListItem>)ViewBag.drop2, new { @class = "form-control" })
+    <br />
+    <label>Müşteri Adı</label>
+    @Html.DropDownListFor(x => x.Tbl_Musteri.id, (List<SelectListItem>)ViewBag.drop3, new { @class = "form-control" })
+    <br />
+
+    <label>Fiyatı</label>
+    @Html.DropDownListFor(x => x.Tbl_Ürünler.id, (List<SelectListItem>)ViewBag.drop4, new { @class = "form-control" })
+    <br />
+
+
+    <br />
+
+    <button class="btn btn-success">Satış Yap</button>
+</form>
+
+

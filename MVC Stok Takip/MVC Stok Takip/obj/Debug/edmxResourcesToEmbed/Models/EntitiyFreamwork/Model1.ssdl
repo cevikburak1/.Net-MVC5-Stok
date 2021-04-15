@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbMVCStokModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kullanıcı" Type="varchar" MaxLength="50" />
+    <Property Name="şifre" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Tbl_Kategori">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ad" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Tbl_Musteri">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="varchar" MaxLength="50" />
+    <Property Name="soyad" Type="varchar" MaxLength="50" />
+    <Property Name="sehir" Type="varchar" MaxLength="15" />
+    <Property Name="bakiye" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="durum" Type="bit" />
+  </EntityType>
+  <EntityType Name="Tbl_Personel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="varchar" MaxLength="50" />
+    <Property Name="soyad" Type="varchar" MaxLength="50" />
+    <Property Name="departman" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Tbl_Satışlar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="urun" Type="int" />
+    <Property Name="personel" Type="int" />
+    <Property Name="musteri" Type="int" />
+    <Property Name="fiyat" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Tarih" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="Tbl_Ürünler">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="varchar" MaxLength="50" />
+    <Property Name="marka" Type="varchar" MaxLength="50" />
+    <Property Name="stok" Type="smallint" />
+    <Property Name="alışfiyatı" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="satışfiyat" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="kategori" Type="int" />
+    <Property Name="durum" Type="bit" />
+  </EntityType>
+  <Association Name="FK_Tbl_Satışlar_Tbl_Musteri">
+    <End Role="Tbl_Musteri" Type="Self.Tbl_Musteri" Multiplicity="0..1" />
+    <End Role="Tbl_Satışlar" Type="Self.Tbl_Satışlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Musteri">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Tbl_Satışlar">
+        <PropertyRef Name="musteri" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Satışlar_Tbl_Personel">
+    <End Role="Tbl_Personel" Type="Self.Tbl_Personel" Multiplicity="0..1" />
+    <End Role="Tbl_Satışlar" Type="Self.Tbl_Satışlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Personel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Tbl_Satışlar">
+        <PropertyRef Name="personel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Satışlar_Tbl_Ürünler">
+    <End Role="Tbl_Ürünler" Type="Self.Tbl_Ürünler" Multiplicity="0..1" />
+    <End Role="Tbl_Satışlar" Type="Self.Tbl_Satışlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Ürünler">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Tbl_Satışlar">
+        <PropertyRef Name="urun" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Ürünler_Tbl_Kategori">
+    <End Role="Tbl_Kategori" Type="Self.Tbl_Kategori" Multiplicity="0..1" />
+    <End Role="Tbl_Ürünler" Type="Self.Tbl_Ürünler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Kategori">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Tbl_Ürünler">
+        <PropertyRef Name="kategori" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbMVCStokModelStoreContainer">
+    <EntitySet Name="tbl_admin" EntityType="Self.tbl_admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Kategori" EntityType="Self.Tbl_Kategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Musteri" EntityType="Self.Tbl_Musteri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Personel" EntityType="Self.Tbl_Personel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Satışlar" EntityType="Self.Tbl_Satışlar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Ürünler" EntityType="Self.Tbl_Ürünler" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Tbl_Satışlar_Tbl_Musteri" Association="Self.FK_Tbl_Satışlar_Tbl_Musteri">
+      <End Role="Tbl_Musteri" EntitySet="Tbl_Musteri" />
+      <End Role="Tbl_Satışlar" EntitySet="Tbl_Satışlar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Satışlar_Tbl_Personel" Association="Self.FK_Tbl_Satışlar_Tbl_Personel">
+      <End Role="Tbl_Personel" EntitySet="Tbl_Personel" />
+      <End Role="Tbl_Satışlar" EntitySet="Tbl_Satışlar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Satışlar_Tbl_Ürünler" Association="Self.FK_Tbl_Satışlar_Tbl_Ürünler">
+      <End Role="Tbl_Ürünler" EntitySet="Tbl_Ürünler" />
+      <End Role="Tbl_Satışlar" EntitySet="Tbl_Satışlar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Ürünler_Tbl_Kategori" Association="Self.FK_Tbl_Ürünler_Tbl_Kategori">
+      <End Role="Tbl_Kategori" EntitySet="Tbl_Kategori" />
+      <End Role="Tbl_Ürünler" EntitySet="Tbl_Ürünler" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

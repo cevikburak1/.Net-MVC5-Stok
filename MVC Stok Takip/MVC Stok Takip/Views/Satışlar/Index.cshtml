@@ -1,0 +1,38 @@
+﻿@using MVC_Stok_Takip.Models.EntitiyFreamwork
+@model List<Tbl_Satışlar>
+
+
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Satış Paneli</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Ürün Adı</th>
+        <th>Personel</th>
+        <th>Müşteri</th>
+        <th>Fiyat</th>
+        <th>Tarih</th>
+
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.id</td>
+            <td>@x.Tbl_Ürünler.ad</td>
+            <td>@x.Tbl_Personel.ad</td>
+            <td>@x.Tbl_Musteri.ad</td>
+            <td>@x.Tbl_Ürünler.satışfiyat</td>
+            <td>@x.Tarih</td>
+
+
+        </tr>
+    }
+</table>
+<a href="/Satışlar/YeniSatış/" class=" btn btn-primary"> Yeni Satış</a>

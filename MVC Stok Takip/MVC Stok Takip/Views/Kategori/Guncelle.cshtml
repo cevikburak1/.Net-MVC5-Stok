@@ -1,0 +1,21 @@
+﻿@model MVC_Stok_Takip.Models.EntitiyFreamwork.Tbl_Kategori
+@{
+    ViewBag.Title = "Guncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("TamGuncelle", "Kategori", FormMethod.Post))
+{
+
+    <h2> Kategori Güncelleme Sayfası</h2>
+    <br />
+    @Html.HiddenFor(x => x.id, new { @class = "form-control" })
+    <br />
+    <label>Kategori Adı</label>
+    @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
+
+    <br />
+    <button class="btn btn-warning">Güncelle</button>
+}
+
+

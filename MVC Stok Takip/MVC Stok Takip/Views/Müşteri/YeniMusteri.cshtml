@@ -1,0 +1,27 @@
+﻿@model MVC_Stok_Takip.Models.EntitiyFreamwork.Tbl_Musteri 
+@{
+    ViewBag.Title = "YeniKategori";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<form method="post">
+    <h2>Yeni Müşteri Ekleme Sayfası</h2>
+    <br />
+    <label>Müşteri Adı</label>
+    @Html.TextBoxFor(x => x.ad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.ad, "", new { @style = "color:black" })
+    <br />
+    <label>Müşteri SoyAdı</label>
+    @Html.TextBoxFor(x => x.soyad, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.soyad, "", new { @style = "color:black" })
+    <br />
+    <label>Müşteri Şehri</label>
+    @Html.TextBoxFor(x => x.sehir, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.sehir, "", new { @style = "color:black" })
+    <br />
+    <label>Müşterinin Bakiyesi</label>
+    @Html.TextBoxFor(x => x.bakiye, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.bakiye, "", new { @style = "color:black" })
+    <br />
+
+    <button class="btn btn-info">Kaydet</button>
+</form>
